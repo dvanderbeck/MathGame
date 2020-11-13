@@ -36,8 +36,8 @@ $(document).ready(function(){
 
   var questionGenerator = function () {
     var question = {};
-    var num1 = randomNumberGenerator(10);
-    var num2 = randomNumberGenerator(10);
+    var num1 = randomNumberGenerator(20);
+    var num2 = randomNumberGenerator(20);
 
     question.answer = num1 + num2;
     question.equation = String(num1) + " + " + String(num2);
