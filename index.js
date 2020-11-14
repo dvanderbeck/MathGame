@@ -3,6 +3,9 @@ $(document).ready(function(){
   var interval;
   var timeLeft = 10;
   var score = 0;
+  var hiscore = 0;
+
+
 
   var updateTimeLeft = function (amount) {
     timeLeft += amount;
@@ -12,7 +15,17 @@ $(document).ready(function(){
   var updateScore = function (amount) {
     score += amount;
     $('#score').text(score);
+    };
+
+  var updateHiScore = function () {
+    if (hiscore < score) {
+      hiscore = score
+      $('#hiscore').text(hiscore);
+    }
   };
+
+
+
 
   var startGame = function () {
     if (!interval) {
@@ -36,8 +49,8 @@ $(document).ready(function(){
 
   var questionGenerator = function () {
     var question = {};
-    var num1 = randomNumberGenerator(20);
-    var num2 = randomNumberGenerator(20);
+    var num1 = randomNumberGenerator(10);
+    var num2 = randomNumberGenerator(10);
 
     question.answer = num1 + num2;
     question.equation = String(num1) + " + " + String(num2);
@@ -56,6 +69,7 @@ $(document).ready(function(){
       $('#user-input').val('');
       updateTimeLeft(+1);
       updateScore(+1);
+      updateHiScore(); //Added here
     }
   };
 
